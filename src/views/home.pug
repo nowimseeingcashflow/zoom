@@ -3,5 +3,19 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
+        title Zoom beta
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+       
     body 
+        header
+            h1 The Chat!
+        main 
+            h3 my blog
+            button(type="button", onclick="location.href='http://blog.naver.com/happyphjm1'") gogo
+
+            ul(style="list-style-type: none;")
+            form
+                input(type="text", placeholder="write a msg", name="submit", required)
+                button Send
+        
+        script(src="/public/js/app.js")
