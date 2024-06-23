@@ -1,15 +1,14 @@
+const appSocket = new WebSocket("ws://localhost:5000/chat");
 const messageList = document.querySelector("ul");
 const messageForm = document.querySelector("form");
-const appSocket = new WebSocket("ws://localhost:5000/chat");
 
 appSocket.addEventListener("open", () => {
   console.log("Sujing in❤");
 });
 
-appSocket.addEventListener("message", (message) => {
+appSocket.addEventListener("message", (msg) => {
     const li = document.createElement("li");
-    console.log(message.data);
-    li.innerText = message.data;
+    li.innerText = msg.data;
     messageList.append(li);
 });
 
@@ -23,8 +22,13 @@ appSocket.addEventListener("close", () => {
 
 messageForm.addEventListener("submit", (e)=>{
     e.preventDefault();
+    const nickname = document.cookie
+  .split('; ')
+  .find(pair => pair.startsWith('nickname='))
+  ?.split('=')[1];
+
     const input = messageForm.querySelector("input");
     const text = input.value.trim();
-    appSocket.send(JSON.stringify({ type: 'chatty', text }));
+    appSocket.send(JSON.stringify({ text: text, nickname: nickname }));
     input.value = "";
 });

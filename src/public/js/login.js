@@ -1,4 +1,3 @@
-const loginSocket = new WebSocket("ws://localhost:5000/");
 const nickForm = document.querySelector("form");
 
 function getExpirationDate() {
@@ -14,7 +13,6 @@ nickForm.addEventListener("submit", (e) => {
     const nickname = nickInput.value.trim();
     document.cookie = `nickname=${nickname}; expires=${getExpirationDate()}` ;
     
-    loginSocket.send(JSON.stringify({ type: 'setNickname', nickname }));
     nickForm.remove();
 
     window.location = "/chat";

@@ -18,7 +18,6 @@ function requireNickname(req, res, next) {
     // Redirect user to login or nickname setting page
     return res.redirect('/'); 
   }
-  console.log(nickname);
   
   next();
 }
@@ -26,6 +25,7 @@ function requireNickname(req, res, next) {
 app.get("/", (req, res)=> res.render("index"))
 
 app.get("/chat", requireNickname, (req, res) => {
+  const nickname = req.cookies.nickname
   res.render("home")
 });
 
@@ -34,38 +34,28 @@ const wss = new Websocket.Server({ server });
 
 const sockets = [];
 
-wss.on("connection", (socket, req) => {
+wss.on("connection", (socket) => {
   sockets.push(socket);
-  req.socket = socket;
 
-  socket.on("setNick", (data)=>{
-    if (data.type === 'setNickname') {
-      const nickname = data.nickname;
-      req.socket.nickname = nickname;
-      wss.clients.forEach(client => {
-        if (client.readyState === socket.OPEN) {
-          client.send(JSON.stringify({ type: 'nickname', nickname }));
-        }
-      });
-    }
-  })
   socket.on("message", (data) => {
-    var message = data.toString("utf8");
-
-    if (data.type === 'setNickname') {
-      const nickname = data.nickname;
-      req.socket.nickname = nickname;
+    var data = data.toString("utf8");
+  
+    const parsedData = JSON.parse(data);
+    const message = parsedData.text;
+    const nickname = parsedData.nickname;
+    
+    if (message === undefined){
       sockets.forEach((eaSocket) => {
-        eaSocket.send(JSON.stringify({ type: 'nickname', nickname }));
-        }
-  );
+      eaSocket.send(nickname + " is connected");
+      });
+      return;
     }
-    if (data.type === 'chatty'){
-      sockets.forEach((eaSocket) => {
-      eaSocket.send(JSON.stringify({ type: 'message', text: message }));
+    sockets.forEach((eaSocket) => {
+    eaSocket.send(nickname + " : " + message);
     });
-  }
   });
+  
+  
   socket.on("close", () => {
     console.log("Disconnected from client");
   });
