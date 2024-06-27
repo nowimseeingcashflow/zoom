@@ -12,7 +12,8 @@
     "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.7",
     "@babel/node": "^7.24.7",
-    "@babel/preset-env": "^7.24.7"
+    "@babel/preset-env": "^7.24.7",
+    "electron": "^31.0.2"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",

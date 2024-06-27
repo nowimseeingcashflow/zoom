@@ -1,0 +1,10 @@
+.chat-message {
+    /* Basic styling */
+    display: flex; /* Allow for flexbox layout */
+    align-items: flex-start; /* Align items vertically at the start */
+    padding: 10px 15px; /* Add some padding for content */
+    margin-bottom: 10px; /* Add some space between messages */
+    border-radius: 8px; /* Create rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    position: relative; /* Allow for positioning child elements */
+  }

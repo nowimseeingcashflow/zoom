@@ -46,7 +46,7 @@ wss.on("connection", (socket) => {
     
     if (message === undefined){
       sockets.forEach((eaSocket) => {
-      eaSocket.send(nickname + " is connected");
+      eaSocket.send(nickname + " is connected!");
       });
       return;
     }

@@ -1,4 +1,4 @@
-const appSocket = new WebSocket("ws://localhost:5000/chat");
+const appSocket = new WebSocket("ws://chatty-server-env-1.eba-bpwvsyt8.ap-northeast-2.elasticbeanstalk.com/chat");
 const messageList = document.querySelector("ul");
 const messageForm = document.querySelector("form");
 
@@ -8,8 +8,10 @@ appSocket.addEventListener("open", () => {
 
 appSocket.addEventListener("message", (msg) => {
     const li = document.createElement("li");
+    li.className = "chat-message";
     li.innerText = msg.data;
     messageList.append(li);
+    li.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
 
 appSocket.addEventListener("close", () => {

@@ -5,6 +5,7 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Zoom beta
         link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+        link(rel="stylesheet", href="../public/css/style.css")
        
     body 
         header
@@ -13,7 +14,7 @@ html(lang="en")
             h3 my blog
             button(type="button", onclick="location.href='http://blog.naver.com/happyphjm1'") gogo
 
-            ul(style="list-style-type: none;")
+            ul(style="list-style-type: none; max-height: 300px;overflow-y: auto;")
             form
                 input(type="text", placeholder="write a msg", name="submit", required)
                 button Send
