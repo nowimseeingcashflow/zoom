@@ -1,9 +1,9 @@
-const appSocket = new WebSocket("ws://chatty-server-env-1.eba-bpwvsyt8.ap-northeast-2.elasticbeanstalk.com/chat");
+const appSocket = new WebSocket("wss://"+ window.location.host);
 const messageList = document.querySelector("ul");
 const messageForm = document.querySelector("form");
 
 appSocket.addEventListener("open", () => {
-  console.log("Sujing in❤");
+  console.log("in❤");
 });
 
 appSocket.addEventListener("message", (msg) => {
@@ -15,12 +15,8 @@ appSocket.addEventListener("message", (msg) => {
 });
 
 appSocket.addEventListener("close", () => {
-  console.log("Sujing out❤");
+  console.log("out❤");
 });
-
-// setTimeout(() => {
-//     appSocket.send("sujini cuter!!!");
-// }, 5000);
 
 messageForm.addEventListener("submit", (e)=>{
     e.preventDefault();

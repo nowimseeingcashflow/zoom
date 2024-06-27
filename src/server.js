@@ -29,6 +29,10 @@ app.get("/chat", requireNickname, (req, res) => {
   res.render("home")
 });
 
+app.get("/iloveyou", (req, res) => {
+  res.send("I love you too");
+})
+
 const server = http.createServer(app);
 const wss = new Websocket.Server({ server });
 
@@ -61,4 +65,4 @@ wss.on("connection", (socket) => {
   });
 });
 
-server.listen(5000, () => console.log("Listening on localhost:5000"));
+server.listen(8080, () => console.log("Listening on localhost:8080"));
