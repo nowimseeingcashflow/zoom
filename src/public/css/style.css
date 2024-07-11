@@ -1,10 +1,30 @@
 .chat-message {
-    /* Basic styling */
-    display: flex; /* Allow for flexbox layout */
-    align-items: flex-start; /* Align items vertically at the start */
-    padding: 10px 15px; /* Add some padding for content */
-    margin-bottom: 10px; /* Add some space between messages */
-    border-radius: 8px; /* Create rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    position: relative; /* Allow for positioning child elements */
-  }
+  /* Basic styling */
+  display: flex; /* Allow for flexbox layout */
+  align-items: flex-start; /* Align items vertically at the start */
+  padding: 10px 15px; /* Add some padding for content */
+  margin-bottom: 10px; /* Add some space between messages */
+  border-radius: 8px; /* Create rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  position: relative; /* Allow for positioning child elements */
+}
+
+.chatroom-enter {
+    padding : 5px;
+    border-radius: 5px;
+    margin: 3px;
+    width: 364px;
+    height: 80px;
+    box-shadow: 0px 1px 3px #777777;
+}
+
+#welcome {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1000; /* 다른 요소 위에 표시되도록 */
+}

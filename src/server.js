@@ -16,22 +16,22 @@ function requireNickname(req, res, next) {
 
   if (!nickname) {
     // Redirect user to login or nickname setting page
-    return res.redirect('/'); 
+    return res.redirect("/");
   }
-  
+
   next();
 }
 
-app.get("/", (req, res)=> res.render("index"))
+app.get("/", (req, res) => res.render("index"));
 
 app.get("/chat", requireNickname, (req, res) => {
-  const nickname = req.cookies.nickname
-  res.render("home")
+  const nickname = req.cookies.nickname;
+  res.render("home");
 });
 
 app.get("/iloveyou", (req, res) => {
-  res.send("I love you too");
-})
+  res.send("I love you Sujin!");
+});
 
 const server = http.createServer(app);
 const wss = new Websocket.Server({ server });
@@ -43,23 +43,22 @@ wss.on("connection", (socket) => {
 
   socket.on("message", (data) => {
     var data = data.toString("utf8");
-  
+
     const parsedData = JSON.parse(data);
     const message = parsedData.text;
     const nickname = parsedData.nickname;
-    
-    if (message === undefined){
+
+    if (message === undefined) {
       sockets.forEach((eaSocket) => {
-      eaSocket.send(nickname + " is connected!");
+        eaSocket.send(nickname + " is connected!");
       });
       return;
     }
     sockets.forEach((eaSocket) => {
-    eaSocket.send(nickname + " : " + message);
+      eaSocket.send(nickname + " : " + message);
     });
   });
-  
-  
+
   socket.on("close", () => {
     console.log("Disconnected from client");
   });

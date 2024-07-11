@@ -1,0 +1,34 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Chatting with SJ
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+        link(rel="stylesheet", href="../public/css/style.css")
+        link(rel="shortcut icon", href="/public/favicon.ico" type="image/x-icon")
+    body 
+        header
+            h1 Hi
+
+        main 
+            h3 my blog
+            button(type="button", onclick="location.href='http://blog.naver.com/happyphjm1'") gogo
+            
+            button#createRoomButton Create Room
+            
+            form#welcome
+                    input(placeholder="Room code", required, type="text")
+                    button Enter
+
+            div#chatroom
+                 
+            div#chats
+                ul(style="list-style-type: none; max-height: 300px;overflow-y: auto;")
+                form 
+                    input(placeholder="chat message", required, type="text")
+                    button Send
+            
+
+        script(src="/socket.io/socket.io.js") 
+        script(src="/public/js/newapp.js") 

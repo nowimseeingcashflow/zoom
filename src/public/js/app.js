@@ -1,4 +1,4 @@
-const appSocket = new WebSocket("wss://"+ window.location.host);
+const appSocket = new WebSocket("ws://" + window.location.host);
 const messageList = document.querySelector("ul");
 const messageForm = document.querySelector("form");
 
