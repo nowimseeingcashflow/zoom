@@ -2,6 +2,7 @@ import express from "express";
 import SocketIO from "socket.io";
 import http from "http";
 import cookieParser from "cookie-parser";
+import mysql from "mysql2";
 
 const app = express();
 

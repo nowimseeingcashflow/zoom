@@ -16,6 +16,7 @@
     width: 364px;
     height: 80px;
     box-shadow: 0px 1px 3px #777777;
+    background-color: #ccc;
 }
 
 #welcome {
@@ -23,8 +24,25 @@
   top: 20px;
   left: 20px;
   width: 300px;
-  height: 100px;
-  background-color: #fff;
+  height: 125px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
   border: 1px solid #ccc;
+  box-shadow :rgba(0,0,0,0.5) 0 0 0 9999px;
   z-index: 1000; /* 다른 요소 위에 표시되도록 */
+}
+
+button {
+  margin: 2px;
+}
+
+.hoverImg img {
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hoverImg img:hover {
+	opacity: .5;
 }
