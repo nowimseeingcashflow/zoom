@@ -29,10 +29,6 @@ app.get("/chat", requireNickname, (req, res) => {
   res.render("home");
 });
 
-app.get("/iloveyou", (req, res) => {
-  res.send("I love you Sujin!");
-});
-
 const server = http.createServer(app);
 const wss = new Websocket.Server({ server });
 
